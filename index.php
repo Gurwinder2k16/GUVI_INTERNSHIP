@@ -15,44 +15,103 @@ body {
   <h2>SAMPLE PAGE GUVI INTERNSHIP</h2>
 
   <form style="position: relative; margin-top: .5em;">
- Select Language <select id="demolist" onchange="document.location = this.options[this.selectedIndex].value;">
-    <option value="#">Other demos...</option>
-    <option value="demo/complete.html">Autocompletion</option>
-    <option value="demo/folding.html">Code folding</option>
-    <option value="demo/theme.html">Themes</option>
-    <option value="mode/htmlmixed/index.html">Mixed language modes</option>
-    <option value="demo/bidi.html">Bi-directional text</option>
-    <option value="demo/variableheight.html">Variable font sizes</option>
-    <option value="demo/search.html">Search interface</option>
-    <option value="demo/vim.html">Vim bindings</option>
-    <option value="demo/emacs.html">Emacs bindings</option>
-    <option value="demo/sublime.html">Sublime Text bindings</option>
-    <option value="demo/tern.html">Tern integration</option>
-    <option value="demo/merge.html">Merge/diff interface</option>
-    <option value="demo/fullscreen.html">Full-screen editor</option>
-    <option value="demo/simplescrollbars.html">Custom scrollbars</option>
+ Select Language <select id="demolist" onchange="select_code(this.options[this.selectedIndex].value)">
+    <option value="1">C</option>
+    <option value="2">C++</option>
+    <option value="3">JAVA</option>
+    <option value="4">Objective C</option>
+    <option value="5">Scala</option>
+    <option value="6">Kotlin</option>
+    <option value="7">Cylon</option>
   </select></form>
  </section>  </br>
-<textarea rows="4" cols="50" name="codesnippet_editable" id="codesnippet_editable"></textarea>
+<textarea rows="4" cols="50" name="codesnippet_editable" id="codesnippet_editable">
+import com.demo.util.MyType;
+import com.demo.util.MyInterface;
+
+public enum Enum {
+  VAL1, VAL2, VAL3
+}
+
+public class Class<T, V> implements MyInterface {
+  public static final MyType<T, V> member;
+  
+  private class InnerClass {
+    public int zero() {
+      return 0;
+    }
+  }
+
+  @Override
+  public MyType method() {
+    return member;
+  }
+
+  public void method2(MyType<T, V> value) {
+    method();
+    value.method3();
+    member = value;
+  }
+}
+</textarea>
 <button onclick="operation()">Click me!!!</button>
 </br>
-<textarea rows="4" cols="50" name="codesnippet_editable1" id="codesnippet_editable1"></textarea>
+
 <script>
 
 var editor = CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
     lineNumbers: true,
     matchBrackets: true,
-    mode: "text/x-csrc"
+    mode: "text/x-java"
   });
-var editor1 = CodeMirror.fromTextArea(document.getElementById("codesnippet_editable1"), {
-    lineNumbers: true,
-    matchBrackets: true,
-    mode: "text/x-csrc"
-  });
+function select_code(opt)
+{    if(opt.value=="C")
+	{
+	 var editor = CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-csrc"
+	});}
+	else if(opt.value=="C++"){
+      var editor = CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-c++src"
+	});}
+	else if(opt.value=="JAVA"){
+      var editor= CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-java"
+	});}
+	else if(opt.value=="Objective C"){
+      var editor= CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-objectivec"
+	});}
+	else if(opt.value=="Scala"){
+      var editor = CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-scala"
+	});}
+	else if(opt.value=="Kotlin"){
+      var editor= CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+          lineNumbers: true,
+          matchBrackets: true,
+          mode: "text/x-kotlin"
+	});}
+	else if(opt.value=="Cylon"){
+      var editor= CodeMirror.fromTextArea(document.getElementById("codesnippet_editable"), {
+          lineNumbers: true,
+          matchBrackets: true,
+          mode: "text/x-ceylon"
+	});}
+}  
 function operation()
 {
-alert("Text Inside Code Mirror 2");
-editor1.setValue(editor.getValue());
+alert(editor.getValue());
 	
 }
 </script>
